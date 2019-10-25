@@ -1,1 +1,1 @@
-https://tokigames.herokuapp.com/
+https://tokigames.herokuapp.com/tokigames-test

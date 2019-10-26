@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function () {
+export default function NavBar() {
   return (
     <nav class="navbar navbar-light bg-light">
         <a class="navbar-brand" href="#">

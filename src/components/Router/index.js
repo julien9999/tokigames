@@ -1,17 +1,14 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import Home from '../../containers/Home';
 
-class Router extends PureComponent {
-  render() {
+export default function Router() {
     return (
         <BrowserRouter>
             <Switch>
-                <Route path="/tokigames-test" component={Home} />
+                <Route path="/" component={Home} />
             </Switch>
         </BrowserRouter>
-  )}
-}
-
-export default Router;
+    );
+  }

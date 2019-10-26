@@ -1,49 +1,32 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux'
-import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 
 import Loader from '../../components/Loader';
 import NavBar from '../../components/NavBar';
+import Add from '../../components/Add';
+import Sort from '../../components/Sort';
 import Order from '../../components/Order';
 import Reset from '../../components/Reset';
-import Sort from '../../components/Sort';
 import Flights from '../../components/Flights';
+import Footer from '../../components/Footer';
 
-function App(props) {
-  const { updateState, content } = props.content;
-
+export default function App(props) {
+  const { loading, content } = useSelector(state => state.content);
+  
   return (
     <>
-      { updateState === -1
+      { loading === -1
         ? <Loader message='Loading...' />
         :  <>
             <NavBar />
+            <Add />
             <Sort />
             <Order />
             <Reset />
             <Flights flights={content} />
+            <Footer />
           </>
       }
     </>
   );
 }
-
-App.propTypes = {
-  content: PropTypes.object
-};
-
-function mapStateToProps({ content }) {
-  return {
-    content
-  };
-}
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({}, dispatch);
-}
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App);

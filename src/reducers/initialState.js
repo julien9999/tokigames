@@ -1,7 +1,6 @@
 export default {
   content: {
-    updateState: -1,
+    loading: -1,
     content: [],
-    reference: {}
   }
 };

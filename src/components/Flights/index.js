@@ -1,17 +1,24 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import * as types from '../../constants/actionTypes';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlane } from '@fortawesome/free-solid-svg-icons'
+import { faPlane, faWindowClose } from '@fortawesome/free-solid-svg-icons'
+import { deleteFlight } from '../../actions/contentActions';
 
-function Flight({details}) {
-    const { type, route } = details;
+function Flight({ details: { type, route, startDate, endDate, durationMinutes, index } }) {
+    const dispatch = useDispatch();
 
     return (
         <div class="col-sm-6">
             <div class="card">
                 <div class="card-body">
+                    <FontAwesomeIcon className='close' icon={faWindowClose} onClick={() => {
+                      dispatch(deleteFlight(index))
+                    }} />
                     <h5 class="card-title">{route}</h5>
+                    <p class="card-text">{`${startDate} - ${endDate}`}</p>
+                    <p class="card-text">{`Duration: ${durationMinutes} (minutes)`}</p>
                     <p class="card-text">
                       <FontAwesomeIcon className='svgPlane' icon={faPlane} />
                       {`${type.charAt(0).toUpperCase() + type.slice(1)} Flight`}
@@ -23,11 +30,13 @@ function Flight({details}) {
     )
 }
 
-function Flights({ flights }) {
-    return (
+export default function Flights() {
+  const filteredFlights = useSelector(state => getVisibleFlights(state.content.content, state.filter, state.order));
+
+  return (
       <div class="container">
           <div class="row">
-              { flights.map(flight => <Flight details={flight} />) }
+              { filteredFlights.map(flight => <Flight details={flight} />) }
           </div>
       </div>
     );
@@ -64,12 +73,3 @@ const getVisibleFlights = (flights, filter, order) => {
 
       return newFlights;
   };
-
-  const mapStateToProps = state => ({
-    flights: getVisibleFlights(state.content.content, state.filter, state.order)
-  });
-
-
-export default connect(
-    mapStateToProps
-  )(Flights);

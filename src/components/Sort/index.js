@@ -1,32 +1,9 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { setFilter } from '../../actions/filterActions';
 import { SHOW_ALL_FILTER, SHOW_CHEAP, SHOW_BUSINESS } from '../../constants/actionTypes';
+import FilterLink from '../FilterLink'
 
-function Link({ active, children, onClick }) {
-  return (
-    <li className="nav-item">
-        <a onClick={onClick} className={`nav-link ${active ? 'active' : null}`} href="#">
-          {children}
-        </a>
-    </li>
-  )
-}
-
-const mapStateToProps = (state, ownProps) => ({
-  active: ownProps.filter === state.filter
-});
-
-const mapDispatchToProps = (dispatch, ownProps) => ({
-  onClick: () => dispatch(setFilter(ownProps.filter))
-});
-
-const FilterLink = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Link);
-
-export default function () {
+export default function Sort() {
   return (
     <div className='container'>
         <div className='row'>
@@ -35,9 +12,9 @@ export default function () {
           </div>
           <div className='col-12'>       
             <ul class="nav nav-pills nav-fill">
-            <FilterLink filter={SHOW_ALL_FILTER}>All</FilterLink>
-            <FilterLink filter={SHOW_CHEAP}>Cheap</FilterLink>
-            <FilterLink filter={SHOW_BUSINESS}>Business</FilterLink>
+              <FilterLink action={setFilter} type={SHOW_ALL_FILTER} property="filter">All</FilterLink>
+              <FilterLink action={setFilter} type={SHOW_CHEAP} property="filter">Cheap</FilterLink>
+              <FilterLink action={setFilter} type={SHOW_BUSINESS} property="filter">Business</FilterLink>
             </ul>
           </div>
         </div>

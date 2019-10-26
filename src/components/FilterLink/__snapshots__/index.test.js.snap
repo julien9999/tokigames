@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<FilterLink> renders correctly 1`] = `
+<li
+  className="nav-item"
+>
+  <a
+    className="nav-link active"
+    onClick={[Function]}
+  >
+    Duration
+  </a>
+</li>
+`;

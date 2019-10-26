@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Order> renders correctly 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="row"
+  >
+    <div
+      className="col-12"
+    >
+      <h5
+        class="card-title margin-top-twenty"
+      >
+        Order options:
+      </h5>
+    </div>
+    <div
+      className="col-12"
+    >
+      <ul
+        class="nav nav-pills nav-fill"
+      >
+        <li
+          className="nav-item"
+        >
+          <a
+            className="nav-link null"
+            onClick={[Function]}
+          >
+            Duration
+          </a>
+        </li>
+        <li
+          className="nav-item"
+        >
+          <a
+            className="nav-link null"
+            onClick={[Function]}
+          >
+            Start Time
+          </a>
+        </li>
+        <li
+          className="nav-item"
+        >
+          <a
+            className="nav-link null"
+            onClick={[Function]}
+          >
+            End Time
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+`;

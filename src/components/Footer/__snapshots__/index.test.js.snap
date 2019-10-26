@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Footer> renders correctly 1`] = `
+<div
+  className="footer-copyright text-center py-3"
+>
+  © 2019 Copyright: Gattegno Julien.
+</div>
+`;
